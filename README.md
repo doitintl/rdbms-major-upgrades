@@ -1,13 +1,19 @@
-# MySQL 5.7 End of life
+# RDBMS Major version upgrades
 
-Documents to help guide the world through MySQL 5.7 End of life, particularly those on a managed service, such as Amazon RDS and Google Cloud SQL.    
-We are not looking to reproduce technical documentation, but rather supplement and aggregate documentation to help create an actionable and successful plan.
+Major version upgrades can be a significant amount of work, depending on various factors. Such as:
+- Incompatible changes between major versions 
+- Performance regressions due to changes in the engine's Query/Cost-based optimizer
+- Choosing the right upgrade process that meets the requirements of your business, documenting and testing it
+- Database/Application complexity and the amount of work required to perform proper testing (smoke, integration, regression and performance)
+- In-flight application changes and new feature development
 
-### TL;DR
+This project aims to help guide the world through these upgrades, particularly those on a managed service, such as Amazon RDS and Google Cloud SQL.    
+We are not looking to reproduce technical documentation, but rather:
+- Provide supplemental documentation 
+- Aggregate existing documentation 
+- Summarize important dates/deadlines, particularly  
 
-DoiT has compiled some resources in order to help our customers plan and execute this major version upgrade successfully.
-- [Mastering EOL Migrations: Lessons learned from MySQL 5.7 to 8.0 with Amazon RDS](https://www.youtube.com/watch?v=WTeOeumDfWw)
-- [MySQL 5.7 End of life major version upgrade checklist](https://github.com/doitintl/mysql-57-eol/blob/main/docs/migration_checklist.md) 
+In order to help create an actionable and successful plan.    
 
 ---
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
@@ -23,35 +29,27 @@ This work is licensed under a
 
 ---
 
-## What is happening?
+## General resources
 
-The MySQL community is planning to [deprecate MySQL 5.7 after October 31, 2023](https://www.oracle.com/us/support/library/lifetime-support-technology-069183.pdf).     
-This means that there will be no security patches or bug fixes after this date.   
-In 2024, Database as a service providers, such as Amazon RDS and Google Cloud SQL will reach critical milestones with respect to the support of this version.   
+Regardless of the RDBMS, we've created this [RDBMS major version upgrade checklist](docs/checklist.md).     
+There will always be specifics related to the particular engine, but the goal of the checklist is to help create an actionable plan regardless of the engine.
 
-## Amazon RDS MySQL 5.7
-If you haven't already upgraded your instance to MySQL 8, [you will be opted in to Extended Support on February 29, 2024](https://repost.aws/articles/ARHdQg4IelQS2uyXkNrINw-A/announcement-amazon-rds-extended-support-opt-in-behavior-is-changing-upgrade-your-amazon-rds-for-mysql-5-7-database-instances-before-february-29-2024-to-avoid-potential-increase-in-charges).    
-Extended support will incur [additional costs](https://aws.amazon.com/rds/mysql/pricing/#Amazon_RDS_Extended_Support_costs).    
+## When should we start planning/executing a major version upgrade?
 
-## Amazon Aurora 2/MySQL 5.7
+Ideally, major version upgrades should be completed before the [EOL](docs/glossary.md#end-of-life) of the engine.   
+Managed services, such as Amazon RDS or Google Cloud SQL will offer grace periods to perform these upgrades, and in some situations offer extended support.   
+***Start planning and executing your upgrades as soon as possible, based on EOL dates.***    
+***Depending on the Cloud Service Provider (CSP), there will be particular deadlines, see below.***
 
-If you haven't already upgraded your instance to Aurora 3/MySQL 8, [you will be opted in to Extended Support on October 31, 2024](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html).    
-Extended support will incur [additional costs](https://aws.amazon.com/rds/aurora/pricing/#Amazon_RDS_Extended_Support_costs).   
+## MySQL 5.7 EOL
 
-## Google Cloud SQL
-There is no officially announced end of support date, which means that it will be at [least 12 months](https://cloud.google.com/sql/docs/mysql/db-versions#major_version_deprecation_plan) from the date of writing this.
-> When Cloud SQL intends to end support for a specific major version, we will send a deprecation notice alerting project owners a minimum of 12 months ahead.    
+- [MySQL 5.7 End of life summary and important dates/deadlines](docs/mysql/5.7_eol/README.md)
 
-[According to a GCP community thread](https://www.googlecloudcommunity.com/gc/Databases/Cloud-SQL-MySQL-5-7-EOL/m-p/646209/highlight/true#M1743), end of support will be December, 2024.     
-***NOTE:*** This is not an official announcement, but including it here for completeness.    
-Upgrading to MySQL 8 also gives you the ability to use [Cloud SQL Editions Enterprise Plus](https://cloud.google.com/blog/products/databases/announcing-the-cloud-sql-enterprise-plus-edition-for-mysql-and-postgresql).
+## PostgreSQL 11 EOL
 
-## When should we start planning/executing the upgrade?
-
-We ***do not recommend*** waiting for automatic upgrades or deprecation notices.    
-***Start planning/executing your upgrade now***
+- [PostgreSQL 11 End of life summary and important dates/deadlines](docs/postgresql/11_eol/README.md)
 
 ## Checklist
 
-Here is [a checklist](docs/migration_checklist.md) that you can use as a starting point to ensure a successful upgrade
+Here is [a checklist](docs/checklist.md) that you can use as a starting point to ensure a successful upgrade
 

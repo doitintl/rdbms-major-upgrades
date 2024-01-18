@@ -14,6 +14,9 @@ The business owner is a representative from the business that will be responsibl
 2. [UAT](#user-acceptance-testing)
 3. Downtime/Uptime requirements allowed
 
+### End of life
+The date that the vendor or open-source community determines the major version of the engine will no longer receive updates, security patches, etc.   
+
 ### Go/No-Go
 The deadline for determining if the upgrade will proceed on the scheduled date/time. This is a business decision based on testing.
 
