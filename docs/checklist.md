@@ -1,5 +1,7 @@
-# MySQL 5.7 migration to 8.0 checklist  
+# Major version upgrade checklist  
 This document will help make sure that proper conversations, planning, and testing have happened in order to ensure a successful migration.    
+
+---
 
 ## Initial requirements, impact assessment and planning
 Properly planning a major RDBMS upgrade requires an understanding of both the technical and business requirements.   
@@ -20,18 +22,18 @@ There are potential blockers and critical issues that can crop up, so identifyin
   - [ ] Determine In-Place or parallel upgrade approach
     - [ ] In-place
     - [ ] If parallel, determine if async replication
-  - [ ] [Review changes in MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html)
-    - [ ] [Review blog post](https://dev.mysql.com/blog-archive/upgrading-to-mysql-8-0-here-is-what-you-need-to-know/) 
-    - [ ] Run the [Upgrade Checker Utility](https://dev.mysql.com/blog-archive/mysql-shell-8-0-4-introducing-upgrade-checker-utility/)
-      - ***RDS***: This can be done manually, or you can clone and upgrade in-place which will automatically run the check
-      - ***GCP***: Must run the upgrade checker manually
+  - [ ] Review engine specific content, considerations and tools
+    - [ ] [MySQL 5.7 to 8](mysql/5.7_eol/README.md#mysql-57-to-8-specific-documentation) 
+    - [ ] [PostgreSQL 11 upgrade](postgresql/11_eol/README.md#postgresql-upgrade-specific-documentation)
     - [ ] Document breaking changes and other identified deprecations/etc 
     - [ ] Document features that may be useful in the future (backlog it!)
   - [ ] Identify new service features in the new version that could be useful (backlog it!)
   - [ ] Identify target Infrastructure configuration (instance class)
   - [ ] Estimate Development and testing efforts
-  - [ ] Establish a deployment path for critical break-fix changes on 5.7
+  - [ ] Establish a deployment path for critical break-fix changes on current engine version
     - [ ] Establish a code-freeze date where non-upgrade related development will stop
+
+---
 
 ## Development and Testing    
 There are different phases of testing performed. Each phase has a specific goal. 
@@ -42,7 +44,7 @@ Testing can uncover bugs, which will require the development team to address.
 The development environments should be used to initially "kick the tires" after an upgrade has been performed.   
 This test should send at least one unit of work through the entire system.     
 This is not an extensive test, the goal here is to expose any obvious breaking-changes.
-  - [ ] Clone Development environment and perform MySQL upgrade
+  - [ ] Clone Development environment and perform engine upgrade
   - [ ] Perform [Smoke test](glossary.md#smoke-test)
     - [ ] Document and remediate any issues
   
@@ -68,7 +70,8 @@ Typically, this testing is performed in a pre-prod or staging environment.
 ### Regression testing (Establishing a baseline)
 A successful upgrade hinges on the ability to capture [baseline](glossary.md#baseline) data. 
   - [ ] Identify method to capture baseline data
-    - For Query performance, [see this article](https://engineering.doit.com/how-to-capture-sql-statements-with-aws-rds-mysql-da12d95c5c4f)
+    - For MySQL, [see this article](https://engineering.doit.com/how-to-capture-sql-statements-with-aws-rds-mysql-da12d95c5c4f)
+    - For PostgresSQL `#TODO`
   - [ ] Capture data in existing environment to establish a [baseline](glossary.md#baseline)
 
 ### Regression testing (Business)
@@ -93,6 +96,8 @@ Performance regressions are one of the most common impacts of an upgrade.
 ### ***Repeat regression testing as needed!!***
 If critical issues were discovered during regression testing, then the testing will need to be done again after the issues have been resolved.
 
+---
+
 ## Production/Go-Live!
 As the name suggests, this is the Production cutover plan. This relies on successful regression testing and an     
 implementation window agreed upon with the business. 
@@ -108,3 +113,13 @@ but there should be a point where the Go/No-go decision is made.
 The implementation should be well rehearsed at this point. Timings should be known.   
 The only thing that is left is to execute the upgrade.
   - [ ] Execute the [Implementation Plan](glossary.md#implementation-plan)
+
+--- 
+
+## Retrospective
+Once complete, it is crucial to perform a retrospective
+  - [ ] Lessons learned for future upgrades
+  - [ ] Review and finalize documentation from lessons learned
+  - [ ] Communicate and document the next deadline, and when to start the next cycle of upgrades
+
+---
