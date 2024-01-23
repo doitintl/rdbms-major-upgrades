@@ -28,7 +28,7 @@ Extended support will incur [additional costs](https://aws.amazon.com/rds/postgr
 
 ## Amazon Aurora 3/PostgreSQL 11
 
-If you haven't already upgraded your instance to Aurora 4/PostgreSQL 12, Aurora 13/PostgreSQL 13 or higher, [you will be opted in to Extended Support on April 1, 2024](https://cloud.google.com/sql/docs/postgresql/db-versions#major_version_deprecation_plan).    
+If you haven't already upgraded your instance to Aurora 4/PostgreSQL 12, Aurora 13/PostgreSQL 13 or higher, [you will be opted in to Extended Support on April 1, 2024](https://aws.amazon.com/blogs/aws/your-mysql-5-7-and-postgresql-11-databases-will-be-automatically-enrolled-into-amazon-rds-extended-support/).    
 Extended support will incur [additional costs](https://aws.amazon.com/rds/aurora/pricing/#Amazon_RDS_Extended_Support_costs).   
 
 ## Google Cloud SQL
