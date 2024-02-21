@@ -42,6 +42,43 @@ There is no officially announced end of support date, which means that it will b
 ***NOTE:*** This is not an official announcement, but including it here for completeness.    
 Upgrading to MySQL 8 also gives you the ability to use [Cloud SQL Editions Enterprise Plus](https://cloud.google.com/blog/products/databases/announcing-the-cloud-sql-enterprise-plus-edition-for-mysql-and-postgresql).
 
+### Post Upgrade Tasks
+* For Cloud SQL for MySQL, after the upgrade “root” user may not have desired permissions. In that case create a temporary user from the console (this user will automatically have cloudsqlsuperuser role) and use it to grant root necessary privileges. Step 2 in this document: https://cloud.google.com/sql/docs/mysql/upgrade-major-db-version-inplace#complete_the_major_version_upgrade
+
+    #### Steps to solve:
+    Create a user from the console. This user will have cloudsqlsuperuser role by default.
+Default permissions for a user created from the console:
+```
+mysql> SHOW GRANTS FOR 'fromconsole';
++----------------------------------------------------+
+| Grants for fromconsole@%                           |
++----------------------------------------------------+
+| GRANT USAGE ON *.* TO `fromconsole`@`%`            |
+| GRANT `cloudsqlsuperuser`@`%` TO `fromconsole`@`%` |
++----------------------------------------------------+
+2 rows in set (0.03 sec)
+ ```
+
+    Log in as fromconsole user and run the following grants:
+
+```
+mysql> grant cloudsqlsuperuser to root;
+mysql> GRANT ROLE_ADMIN ON *.* TO root;
+```
+ 
+    NOTE: If you create Cloud SQL for MySQL 8.0, the root user will have the following permissions:
+
+```
+mysql> show grants for root;
++---------------------------------------------+
+| Grants for root@%                           |
++---------------------------------------------+
+| GRANT USAGE ON *.* TO `root`@`%`            |
+| GRANT `cloudsqlsuperuser`@`%` TO `root`@`%` |
++---------------------------------------------+
+2 rows in set (0.04 sec)
+```
+
 ## When should we start planning/executing the upgrade?
 
 We ***do not recommend*** waiting, start planning/executing your upgrade now***
