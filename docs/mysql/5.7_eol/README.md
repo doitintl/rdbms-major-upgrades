@@ -48,7 +48,9 @@ Upgrading to MySQL 8 also gives you the ability to use [Cloud SQL Editions Enter
     #### Steps to solve:
     Create a user from the console. This user will have cloudsqlsuperuser role by default.
 Default permissions for a user created from the console:
-```
+
+```sql
+
 mysql> SHOW GRANTS FOR 'fromconsole';
 +----------------------------------------------------+
 | Grants for fromconsole@%                           |
@@ -57,18 +59,19 @@ mysql> SHOW GRANTS FOR 'fromconsole';
 | GRANT `cloudsqlsuperuser`@`%` TO `fromconsole`@`%` |
 +----------------------------------------------------+
 2 rows in set (0.03 sec)
- ```
 
-    Log in as fromconsole user and run the following grants:
+ ``` 
+ 
+Log in as fromconsole user and run the following grants:
 
-```
+```sql
 mysql> grant cloudsqlsuperuser to root;
 mysql> GRANT ROLE_ADMIN ON *.* TO root;
 ```
- 
-    NOTE: If you create Cloud SQL for MySQL 8.0, the root user will have the following permissions:
 
-```
+NOTE: If you create Cloud SQL for MySQL 8.0, the root user will have the following permissions:
+
+```sql
 mysql> show grants for root;
 +---------------------------------------------+
 | Grants for root@%                           |
