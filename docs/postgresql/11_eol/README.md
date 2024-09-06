@@ -32,8 +32,15 @@ If you haven't already upgraded your instance to Aurora 4/PostgreSQL 12, Aurora 
 Extended support will incur [additional costs](https://aws.amazon.com/rds/aurora/pricing/#Amazon_RDS_Extended_Support_costs).   
 
 ## Google Cloud SQL
-There is no officially announced end of support date, which means that it will be at [least 12 months](https://cloud.google.com/sql/docs/postgres/db-versions#major_version_deprecation_plan) from the date of writing this.
-> When Cloud SQL intends to end support for a specific major version, we will send a deprecation notice alerting project owners a minimum of 12 months ahead.    
+>Starting on February 1, 2025, the following database major versions will enter extended support:
+>
+>PostgreSQL: 9.6, 10, 11, 12
+
+Extended support will incur [addition costs](https://cloud.google.com/sql/pricing#extended-support-pricing).
+
+For more information [please see Google blog post](https://cloud.google.com/blog/products/databases/extended-support-for-end-of-life-cloud-sql-mysql-and-postgresql).
+
+[Database version policies](https://cloud.google.com/sql/docs/db-versions).
 
 ## When should we start planning/executing the upgrade?
 

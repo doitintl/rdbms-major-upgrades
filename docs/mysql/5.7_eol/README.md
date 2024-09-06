@@ -35,12 +35,16 @@ If you haven't already upgraded your instance to Aurora 3/MySQL 8, [you will be 
 Extended support will incur [additional costs](https://aws.amazon.com/rds/aurora/pricing/#Amazon_RDS_Extended_Support_costs).   
 
 ## Google Cloud SQL
-There is no officially announced end of support date, which means that it will be at [least 12 months](https://cloud.google.com/sql/docs/mysql/db-versions#major_version_deprecation_plan) from the date of writing this.
-> When Cloud SQL intends to end support for a specific major version, we will send a deprecation notice alerting project owners a minimum of 12 months ahead.    
 
-[According to a GCP community thread](https://www.googlecloudcommunity.com/gc/Databases/Cloud-SQL-MySQL-5-7-EOL/m-p/646209/highlight/true#M1743), end of support will be December, 2024.     
-***NOTE:*** This is not an official announcement, but including it here for completeness.    
-Upgrading to MySQL 8 also gives you the ability to use [Cloud SQL Editions Enterprise Plus](https://cloud.google.com/blog/products/databases/announcing-the-cloud-sql-enterprise-plus-edition-for-mysql-and-postgresql).
+>Starting on February 1, 2025, the following database major versions will enter extended support:
+>
+>MySQL: 5.6, 5.7
+
+Extended support will incur [addition costs](https://cloud.google.com/sql/pricing#extended-support-pricing).
+
+For more information [please see Google blog post](https://cloud.google.com/blog/products/databases/extended-support-for-end-of-life-cloud-sql-mysql-and-postgresql).
+
+[Database version policies](https://cloud.google.com/sql/docs/db-versions).
 
 ### Post Upgrade Tasks
 * For Cloud SQL for MySQL, after the upgrade “root” user may not have desired permissions. In that case create a temporary user from the console (this user will automatically have cloudsqlsuperuser role) and use it to grant root necessary privileges. Step 2 in this document: https://cloud.google.com/sql/docs/mysql/upgrade-major-db-version-inplace#complete_the_major_version_upgrade
