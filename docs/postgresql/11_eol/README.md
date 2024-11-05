@@ -13,7 +13,9 @@ DoiT has compiled some resources in order to help our customers plan and execute
 
 ### PostgreSQL upgrade specific documentation
 - `#TODO`
+- [How to perform a major version upgrade for RDS for PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.MajorVersion.Process.html) 
 
+- [Best practices for upgrading Amazon RDS to major and minor versions of PostgreSQL](https://aws.amazon.com/blogs/database/best-practices-for-upgrading-amazon-rds-to-major-and-minor-versions-of-postgresql/)
 ---
 
 ## What is happening?
